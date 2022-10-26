@@ -203,7 +203,7 @@ ingress:
 
   ## Add ingressClassName to the Ingress
   ## Can replace the kubernetes.io/ingress.class annotation on v1.18+
-  ingressClassName: nginx
+  ingressClassName: "nginx"
 
   host: 69.k8s.longhorn.ydns.eu
 
