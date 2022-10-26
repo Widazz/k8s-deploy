@@ -1,4 +1,4 @@
-{{- define "core.apps.longhorn.values" -}}
+{{- define "core.apps.longhorn.values" }}
 
 # Default values for longhorn.
 # This is a YAML-formatted file.
@@ -205,7 +205,7 @@ ingress:
   ## Can replace the kubernetes.io/ingress.class annotation on v1.18+
   ingressClassName: nginx
 
-  host: {{ .Values.apps.longhorn.ingress.hostname | quote }}
+  host: longhorn.ydns.eu
 
   ## Set this to true in order to enable TLS on the ingress record
   tls: true
@@ -260,4 +260,4 @@ serviceAccount:
   # Annotations to add to the service account
   annotations: {}
 
-{{- end -}}
+{{- end }}
