@@ -1,4 +1,5 @@
 {{- if .Values.apps.longhorn.enabled }}
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -13,10 +14,11 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: core
   source:
-    path: Deploy/billing-service
+    chart: longhorn
     repoURL: https://charts.longhorn.io
     targetRevision: {{ .Values.apps.longhorn.version }}
     helm:
       releaseName: longhorn
       values: {{- include "core.apps.longhorn.values" . | toYaml | nindent 8 }}
+
 {{- end }}
