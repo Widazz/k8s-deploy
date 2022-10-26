@@ -1,6 +1,6 @@
 apiVersion: v2
-name: g1-apps
-description: App deployment
+name: g2-apps
+description: Group 2 app deployment
 
 type: application
 
