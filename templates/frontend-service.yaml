@@ -9,6 +9,8 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - PruneLast=true
   destination:
     namespace: group2-dev
     server: {{ .Values.spec.destination.server }}
