@@ -1,5 +1,4 @@
 {{- if .Values.apps.longhorn.enabled }}
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -20,5 +19,4 @@ spec:
     helm:
       releaseName: longhorn
       values: {{- include "core.apps.longhorn.values" . | toYaml | nindent 8 }}
-
 {{- end }}
