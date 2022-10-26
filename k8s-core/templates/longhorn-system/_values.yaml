@@ -1,166 +1,18 @@
 {{- define "core.apps.longhorn.values" }}
---- 
-annotations: {}
-csi: 
-  attacherReplicaCount: ~
-  kubeletRootDir: ~
-  provisionerReplicaCount: ~
-  resizerReplicaCount: ~
-  snapshotterReplicaCount: ~
-defaultSettings: 
-  allowNodeDrainWithLastHealthyReplica: ~
-  allowRecurringJobWhileVolumeDetached: ~
-  allowVolumeCreationWithDegradedAvailability: ~
-  autoCleanupSystemGeneratedSnapshot: ~
-  autoDeletePodWhenVolumeDetachedUnexpectedly: ~
-  autoSalvage: ~
-  backingImageCleanupWaitInterval: ~
-  backingImageRecoveryWaitInterval: ~
-  backupTarget: ~
-  backupTargetCredentialSecret: ~
-  backupstorePollInterval: ~
-  concurrentAutomaticEngineUpgradePerNodeLimit: ~
-  concurrentReplicaRebuildPerNodeLimit: ~
-  createDefaultDiskLabeledNodes: ~
-  defaultDataLocality: ~
-  defaultDataPath: ~
-  defaultLonghornStaticStorageClass: ~
-  defaultReplicaCount: ~
-  disableReplicaRebuild: ~
-  disableRevisionCounter: ~
-  disableSchedulingOnCordonedNode: ~
-  failedBackupTTL: ~
-  guaranteedEngineManagerCPU: ~
-  guaranteedReplicaManagerCPU: ~
-  kubernetesClusterAutoscalerEnabled: ~
-  mkfsExt4Parameters: ~
-  nodeDownPodDeletionPolicy: ~
-  orphanAutoDeletion: ~
-  priorityClass: ~
-  replicaAutoBalance: ~
-  replicaReplenishmentWaitInterval: ~
-  replicaSoftAntiAffinity: ~
-  replicaZoneSoftAntiAffinity: ~
-  storageMinimalAvailablePercentage: ~
-  storageNetwork: ~
-  storageOverProvisioningPercentage: ~
-  systemManagedComponentsNodeSelector: ~
-  systemManagedPodsImagePullPolicy: ~
-  taintToleration: ~
-  upgradeChecker: ~
-enablePSP: true
-global: 
-  cattle: 
-    systemDefaultRegistry: ""
-    windowsCluster: 
-      defaultSetting: 
-        systemManagedComponentsNodeSelector: "kubernetes.io/os:linux"
-        taintToleration: "cattle.io/os=linux:NoSchedule"
-      enabled: false
-      nodeSelector: 
-        kubernetes.io/os: linux
-      tolerations: 
-        - 
-          effect: NoSchedule
-          key: cattle.io/os
-          operator: Equal
-          value: linux
-image: 
-  csi: 
-    attacher: 
-      repository: longhornio/csi-attacher
-      tag: v3.4.0
-    nodeDriverRegistrar: 
-      repository: longhornio/csi-node-driver-registrar
-      tag: v2.5.0
-    provisioner: 
-      repository: longhornio/csi-provisioner
-      tag: v2.1.2
-    resizer: 
-      repository: longhornio/csi-resizer
-      tag: v1.2.0
-    snapshotter: 
-      repository: longhornio/csi-snapshotter
-      tag: v3.0.3
-  longhorn: 
-    backingImageManager: 
-      repository: longhornio/backing-image-manager
-      tag: v3_20221003
-    engine: 
-      repository: longhornio/longhorn-engine
-      tag: v1.3.2
-    instanceManager: 
-      repository: longhornio/longhorn-instance-manager
-      tag: v1_20221003
-    manager: 
-      repository: longhornio/longhorn-manager
-      tag: v1.3.2
-    shareManager: 
-      repository: longhornio/longhorn-share-manager
-      tag: v1_20221003
-    ui: 
-      repository: longhornio/longhorn-ui
-      tag: v1.3.2
-  pullPolicy: IfNotPresent
+
 ingress: 
-  annotations: ~
-  enabled: true
-  host: 69.k8s.longhorn.ydns.eu
+  enabled: 
+    ? 
+      .Values.apps.longhorn.ingress.enabled: ~
+    : false
+  host: 
+    ? 
+      .Values.apps.longhorn.ingress.hostname: ~
+    : ~
   ingressClassName: nginx
   path: /
-  secrets: ~
   secureBackends: false
   tls: true
   tlsSecret: longhorn.local-tls
-longhornDriver: 
-  nodeSelector: {}
-  priorityClass: ~
-  tolerations: []
-longhornManager: 
-  log: 
-    format: plain
-  nodeSelector: {}
-  priorityClass: ~
-  serviceAnnotations: {}
-  tolerations: []
-longhornUI: 
-  nodeSelector: {}
-  priorityClass: ~
-  replicas: 1
-  tolerations: []
-namespaceOverride: ""
-persistence: 
-  backingImage: 
-    dataSourceParameters: ~
-    dataSourceType: ~
-    enable: false
-    expectedChecksum: ~
-    name: ~
-  defaultClass: true
-  defaultClassReplicaCount: 3
-  defaultDataLocality: disabled
-  defaultFsType: ext4
-  migratable: false
-  reclaimPolicy: Delete
-  recurringJobSelector: 
-    enable: false
-    jobList: []
-privateRegistry: 
-  createSecret: ~
-  registryPasswd: ~
-  registrySecret: ~
-  registryUrl: ~
-  registryUser: ~
-service: 
-  manager: 
-    loadBalancerIP: ""
-    loadBalancerSourceRanges: ""
-    nodePort: ""
-    type: ClusterIP
-  ui: 
-    nodePort: ~
-    type: ClusterIP
-serviceAccount: 
-  annotations: {}
 
 {{- end }}
