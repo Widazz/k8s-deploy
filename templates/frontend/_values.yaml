@@ -1,0 +1,44 @@
+{{- define "group2.frontend.values" -}}
+
+replicaCount: 1
+
+image:
+  repository: louthier/frontend-service
+  pullPolicy: Always
+  tag: "latest"
+
+env:
+  "API_BASE_URL": "http://localhost:5138/"
+  "CALLBACK_URL": "http://localhost:3000/auth/callback"
+  "KEYCLOACK_URL": "http://keycloack-keycloack/realms/JukeLadde"
+  "KEYCLOACK_CLIENT_ID": "azertyuiop"
+  "KEYCLOACK_CLIENT_SECRET": "azertyuiop"
+  "KEYCLOACK_ADMIN_ROLE": "admin"
+  "KEYCLOACK_MANAGER_ROLE": "manager"
+  "PRODUCTION": "true"
+
+imagePullSecrets:
+  - name: regcred
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+  hosts:
+    - host: jukeladder.ydns.eu
+      paths: 
+      - path: "/"
+        pathType: Prefix
+
+
+autoscaling:
+  enabled: false
+
+serviceAccount:
+  create: false
+
+{{- end -}}

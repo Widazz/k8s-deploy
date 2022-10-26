@@ -1,4 +1,4 @@
-{{- define "templates.billing.values" -}}
+{{- define "group2.billing.values" -}}
 
 replicaCount: 1
 

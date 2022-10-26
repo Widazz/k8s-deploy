@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: group2-billing
+  name: group2-frontend
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -19,8 +19,8 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    path: Deploy/billing-service
-    repoURL: https://LoicOuthier@dev.azure.com/LoicOuthier/DI3P1P2G2/_git/JukeLadder-Billing
+    path: Deploy/frontend-service
+    repoURL: https://LoicOuthier@dev.azure.com/LoicOuthier/DI3P1P2G2/_git/JukeLadder-frontend
     targetRevision: {{ .Values.spec.repository.branch }}
     helm:
-      values: {{- include "templates.billing.values" . | toYaml | nindent 8 }}
+      values: {{- include "group2.frontend.values" . | toYaml | nindent 8 }}
