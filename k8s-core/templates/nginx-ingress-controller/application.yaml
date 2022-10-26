@@ -1,4 +1,4 @@
-{{- if .Values.apps.longhorn.enabled }}
+{{- if .Values.apps.nginxIngressController.enabled }}
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -20,4 +20,4 @@ spec:
       releaseName: nginx-ingress-cotroller
       values: {{- include "core.apps.nginxIngressController.values" . | toYaml | nindent 8 }}
       
-{{- end }}
+{{- end }}core-components
