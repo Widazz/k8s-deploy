@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: group2-billing
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    namespace: group2-dev
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: Deploy/gateway-service
+    repoURL: https://LoicOuthier@dev.azure.com/LoicOuthier/DI3P1P2G2/_git/JukeLadder-Billing
+    targetRevision: {{ .Values.spec.repository.branch }}
