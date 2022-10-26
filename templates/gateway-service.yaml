@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: group2-frontend
+  name: group2-gateway
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
