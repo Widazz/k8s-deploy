@@ -22,3 +22,5 @@ spec:
     path: Deploy/billing-service
     repoURL: https://LoicOuthier@dev.azure.com/LoicOuthier/DI3P1P2G2/_git/JukeLadder-Billing
     targetRevision: {{ .Values.spec.repository.branch }}
+    helm:
+      valueFiles: ['_values.yaml']
