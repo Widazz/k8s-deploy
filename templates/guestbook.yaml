@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: group2-frontend
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: group2-dev
+    server: {{ .Values.spec.destination.server }}
+  project: group2
+  source:
+    path: Deploy/frontend-service
+    repoURL: https://LoicOuthier@dev.azure.com/LoicOuthier/DI3P1P2G2/_git/JukeLadder-frontend
+    targetRevision: dev
