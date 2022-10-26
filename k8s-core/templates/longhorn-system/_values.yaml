@@ -199,13 +199,13 @@ longhornUI:
 
 ingress:
   ## Set to true to enable ingress record generation
-  enabled: {{ .Values.apps.longhorn.ingress.enabled }}
+  enabled: true
 
   ## Add ingressClassName to the Ingress
   ## Can replace the kubernetes.io/ingress.class annotation on v1.18+
-  ingressClassName: "nginx"
+  ingressClassName: nginx
 
-  host: "longhorn.ydns.eu"
+  host: longhorn.ydns.eu
 
   ## Set this to true in order to enable TLS on the ingress record
   tls: true
