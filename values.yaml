@@ -4,7 +4,3 @@ spec:
     server: https://kubernetes.default.svc
   repository:
     branch: dev
-  
-apps:
-  billing:
-    values: {{- include "templates.billing.values" . | toYaml | nindent 8 }}
