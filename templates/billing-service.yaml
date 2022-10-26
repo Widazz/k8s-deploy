@@ -19,6 +19,6 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    path: Deploy/gateway-service
+    path: Deploy/billing-service
     repoURL: https://LoicOuthier@dev.azure.com/LoicOuthier/DI3P1P2G2/_git/JukeLadder-Billing
     targetRevision: {{ .Values.spec.repository.branch }}
