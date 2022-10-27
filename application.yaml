@@ -17,6 +17,6 @@ spec:
     server: "https://kubernetes.default.svc"
   project: default
   source:
-    path: 01-bundle
+    path: deployments
     repoURL: https://github.com/Widazz/k8s-deploy/
     targetRevision: HEAD

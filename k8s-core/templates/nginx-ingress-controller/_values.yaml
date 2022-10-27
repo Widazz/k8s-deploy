@@ -1,3 +1,0 @@
-{{- define "core.apps.nginxIngressController.values" -}}
-
-{{- end -}}
