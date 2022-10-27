@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: group-2-billing-dev
+  name: group2-billing-dev
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -15,7 +15,7 @@ spec:
       - ApplyOutOfSyncOnly=true
       - PruneLast=true
   destination:
-    namespace: group-2-dev
+    namespace: group2-dev
     server: {{ .Values.spec.destination.server }}
   project: default
   source:

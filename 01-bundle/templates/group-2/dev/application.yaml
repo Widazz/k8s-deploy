@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: group-2-billing-dev
+  name: group-2-dev-apps
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -15,12 +15,10 @@ spec:
       - ApplyOutOfSyncOnly=true
       - PruneLast=true
   destination:
-    namespace: group-2-dev
+    namespace: argocd
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    path: Deploy/billing-service
-    repoURL: https://LoicOuthier@dev.azure.com/LoicOuthier/DI3P1P2G2/_git/JukeLadder-Billing
-    targetRevision: {{ .Values.spec.repository.branch }}
-    helm:
-      values: {{- include "group2.billing.values" . | toYaml | nindent 8 }}
+    path: apps/group-2/dev/
+    repoURL: https://github.com/Widazz/k8s-deploy/
+    targetRevision: HEAD

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: group2-frontend
+  name: group-2-frontend-dev
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -15,7 +15,7 @@ spec:
       - ApplyOutOfSyncOnly=true
       - PruneLast=true
   destination:
-    namespace: group2-dev
+    namespace: group-2-dev
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
