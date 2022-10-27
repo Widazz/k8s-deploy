@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mssql-statefulset
+  namespace: mssql
+spec:
+  replicas: {{ .Values.mssql.replicas }}
+  serviceName: "mssql-service"
+  selector:
+     matchLabels:
+       app: mssql-server
+  template:
+    metadata:
+      labels:
+        app: mssql-server
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+      - name: mssql-server
+        image: {{ .Values.mssql.image }}
+        resources:
+            limits:
+              memory: "2Gi"
+              cpu: "500m"
+        ports:
+            - containerPort: 1433
+        env:
+            - name: MSSQL_PID
+              value: "Developer"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              value: "OfficeProjet1."
+        volumeMounts:
+            - name: mssql-data
+              mountPath: /var/opt/mssql
+  volumeClaimTemplates:
+    - metadata:
+         name: mssql-data
+      spec:
+        storageClassName: {{ .Values.storage.storageClassName }}
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: {{ .Values.storage.size }}

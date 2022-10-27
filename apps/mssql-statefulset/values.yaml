@@ -1,0 +1,14 @@
+---
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  repository:
+    branch: dev
+
+mssql:
+  replicas: 2
+  image: mcr.microsoft.com/mssql/server:2019-latest
+
+storage:
+  storageClassName: "linode-block-storage-retain"
+  size: 4Gi
