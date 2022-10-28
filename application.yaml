@@ -19,4 +19,4 @@ spec:
   source:
     path: deployments
     repoURL: https://github.com/Widazz/k8s-deploy/
-    targetRevision: HEAD
+    targetRevision: diiage
