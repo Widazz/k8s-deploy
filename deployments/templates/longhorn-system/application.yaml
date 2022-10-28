@@ -9,6 +9,7 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
   destination:
     namespace: longhorn-system
     server: {{ .Values.spec.destination.server }}

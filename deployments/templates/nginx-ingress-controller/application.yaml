@@ -9,6 +9,7 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
   destination:
     namespace: nginx-ingress
     server: {{ .Values.spec.destination.server }}
