@@ -9,3 +9,6 @@ apps:
   nginxIngressController: 
     enabled: true
     version: "9.3.18"
+
+  kezycloak:
+    version: 9.6.1
