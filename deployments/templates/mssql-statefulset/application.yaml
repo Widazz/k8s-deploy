@@ -5,6 +5,8 @@ metadata:
   namespace: argocd
 spec:
   syncPolicy:
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
