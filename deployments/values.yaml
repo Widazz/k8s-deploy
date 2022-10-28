@@ -1,6 +1,7 @@
 ---
 spec:
   targetRevision: diiage
+  storageClass: linode-block-storage-retain
   destination: 
     server: "https://kubernetes.default.svc"
 apps: 
