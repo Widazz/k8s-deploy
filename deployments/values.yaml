@@ -1,5 +1,6 @@
 ---
-spec: 
+spec:
+  targetRevision: diiage
   destination: 
     server: "https://kubernetes.default.svc"
 apps: 
