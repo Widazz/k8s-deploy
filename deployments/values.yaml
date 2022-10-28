@@ -12,3 +12,6 @@ apps:
 
   kezycloak:
     version: 9.6.1
+
+  argocd:
+    version: 2.4.15

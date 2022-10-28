@@ -21,4 +21,4 @@ spec:
   source:
     path: apps/group-2/dev/
     repoURL: https://github.com/Widazz/k8s-deploy/
-    targetRevision: HEAD
+    targetRevision:  {{ .Values.spec.targetRevision }}

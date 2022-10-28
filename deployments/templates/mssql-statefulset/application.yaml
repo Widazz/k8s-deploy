@@ -15,4 +15,4 @@ spec:
   source:
     path: apps/mssql-statefulset/
     repoURL: https://github.com/Widazz/k8s-deploy/
-    targetRevision: HEAD
+    targetRevision:  {{ .Values.spec.targetRevision }}
