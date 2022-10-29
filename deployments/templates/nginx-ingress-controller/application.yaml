@@ -1,5 +1,5 @@
-{{- if .Values.apps.nginxIngressController.enabled }}
-
+{{ if .Values.apps.nginxIngressController.enabled }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -22,6 +22,6 @@ spec:
     targetRevision: {{ .Values.apps.nginxIngressController.version }}
     helm:
       releaseName: nginx-ingress-controller
-      values: {{- include "core.apps.nginxIngressController.values" . | toYaml | nindent 8 }}
-      
-{{- end }}
+      values: {{ include "core.apps.nginxIngressController.values" . | toYaml | nindent 8 }}
+---
+{{ end }}

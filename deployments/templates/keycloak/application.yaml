@@ -20,4 +20,4 @@ spec:
     targetRevision: {{ .Values.apps.keycloak.version }}
     helm:
       releaseName: keycloak
-      values: {{- include "core.apps.keycloak.values" . | toYaml | nindent 8 }}
+      values: {{ include "core.apps.keycloak.values" . | toYaml | nindent 8 }}

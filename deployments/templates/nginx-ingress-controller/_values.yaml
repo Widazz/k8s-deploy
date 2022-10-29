@@ -1,3 +1,5 @@
-{{- define "core.apps.nginxIngressController.values" -}}
-
-{{- end -}}
+{{ define "core.apps.nginxIngressController.values" }}
+---
+# Values here
+---
+{{ end }}

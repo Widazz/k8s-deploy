@@ -1,5 +1,5 @@
-{{- define "core.apps.longhorn.values" }}
-
+{{ define "core.apps.longhorn.values" }}
+---
 ingress: 
   enabled: 
     ? 
@@ -14,5 +14,5 @@ ingress:
   secureBackends: false
   tls: true
   tlsSecret: longhorn.local-tls
-
-{{- end }}
+---
+{{ end }}
