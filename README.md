@@ -16,10 +16,12 @@ Commencer par cloner ce dépôt dans le répertoire de votre choix :
 git clone https://github.com/Widazz/k8s-deploy --branch diiage
 ```
 
-Installer ensuite la chart située dans le dossier /app/argo-cd :
+Installer ensuite la chart située dans le dossier /app/metallb puis /app/argo-cd :
 
 ```bash
-cd k8s-deploy/apps/argo-cd
+cd k8s-deploy/apps/metallb
+helm install metallb . --values values.yaml -n metallb --create-namespace
+cd ../argo-cd
 helm install argocd . --values values.yaml -n argocd --create-namespace
 ```
 
