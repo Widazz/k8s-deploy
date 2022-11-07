@@ -1,0 +1,9 @@
+---
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  repository:
+    branch: dev
+
+metallb:
+  addressPool: 10.5.0.100-10.5.0.150
